@@ -1,2 +1,2 @@
 # Chat para twitch
- primeiro projeto para intereção de chat
+ primeiro projeto para interação de chat
