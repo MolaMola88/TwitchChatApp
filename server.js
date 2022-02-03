@@ -30,7 +30,7 @@ client.on('message', (channel, tags, message, self) => {
     if(message === 'Hi' || message === 'Hello') {
 		// "@alca, heya!"
 	    client.say(channel, `@${tags.username}, Welcome!`);
-
+    }
     //Hnadler
     if(self || !message.startsWith('!')) return;
 
