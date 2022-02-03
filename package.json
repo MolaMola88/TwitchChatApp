@@ -1,0 +1,24 @@
+{
+  "name": "twitchchatapp",
+  "version": "1.0.0",
+  "description": "primeiro projeto para interação de chat",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MolaMola88/TwitchChatApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MolaMola88/TwitchChatApp/issues"
+  },
+  "homepage": "https://github.com/MolaMola88/TwitchChatApp#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "tmi.js": "^1.8.5"
+  }
+}
