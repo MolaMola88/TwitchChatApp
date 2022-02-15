@@ -19,6 +19,8 @@
   "homepage": "https://github.com/MolaMola88/TwitchChatApp#readme",
   "dependencies": {
     "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "socket.io": "^4.4.1",
     "tmi.js": "^1.8.5"
   }
 }
