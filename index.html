@@ -1,82 +1,57 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <style>
-      body { margin: 0; padding-bottom: 3rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-      body {display: block;
-            width: 200px;
-            height: 200px;
-            margin: 50px auto;
-            border: 3px solid red}
 
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages > li { padding: 0.5rem 1rem; }
-      #messages > li { background: #efefef00; }
-      #messages > li{
-        animation-name:showUp;
-        animation-duration: 1s;
+<head>
+  <link href="./static/styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <ul id="messages"></ul>
+  <script src="/socket.io/socket.io.js"></script>
+
+  <script>
+    var socket = io();
+
+    socket.on('chat message', function (payload) {
+      //Conta número de itens na lista
+      const msg = payload['msg'];
+
+      var messagesList = document.getElementById("messages").getElementsByTagName("li");
+      itensNumber = messagesList.length;
+
+      //Acrescenta um item a lista com a mensagem
+      if (itensNumber <= 5) {
+        //setTimeout( function(){
+        var item = document.createElement('li');
+        item.textContent = msg;
+        //Pega a <ul>  messages e faz um apêndice de um novo item <li> contendo a mensagem recebida
+        messages.appendChild(item);
+        //Mexe todo o objeto janela em x=0, y=altura do documento pixels (de algum API já nativo creio eu)
+        window.scrollTo(0, document.body.scrollHeight);
+        //},2000)
       }
-        @keyframes showUp {
-          from{
-                opacity: 0;
-          }
-          to{
-                opacity: 1;
-          }
+
+      if (itensNumber >= 5) {
+        //Apaga o primeiro elemento da lista
+        let contaItens = itensNumber - 5
+        while (contaItens >= 0) {
+          document.getElementById('messages').removeChild(document.getElementById('messages').getElementsByTagName('li')[contaItens]);
+          contaItens--;
         }
+      }
 
-    </style>
-  </head>
-  <body>
-
-    <ul id="messages"></ul>
-
-    <script src="/socket.io/socket.io.js"></script>
-
-    <script>
-      var socket = io();     
+    });
 
 
-        socket.on('chat message', function(msg) {  
-          //Conta número de itens na lista
-          var messagesList = document.getElementById("messages").getElementsByTagName("li");
-          itensNumber = messagesList.length;
-        
-          //Acrescenta um item a lista com a mensagem
-          if (itensNumber <= 5){
-            //setTimeout( function(){
-              var item = document.createElement('li');    
-              item.textContent = msg; 
-              //Pega a <ul>  messages e faz um apêndice de um novo item <li> contendo a mensagem recebida
-              messages.appendChild(item);   
-              //Mexe todo o objeto janela em x=0, y=altura do documento pixels (de algum API já nativo creio eu)
-              window.scrollTo(0, document.body.scrollHeight);
-            //},2000)
-          }
+    //Animar só uma vez
+    socket.addEventListener("click", function () {
+      showUp.toggleAttribute("disabled");
+    });
 
-          if (itensNumber >= 5)
-            {
-              //Apaga o primeiro elemento da lista
-              let contaItens = itensNumber - 5
-              while (contaItens >= 0){
-                document.getElementById('messages').removeChild(document.getElementById('messages').getElementsByTagName('li')[contaItens]);
-                contaItens--;
-              }
-            }
 
-         });
+  </script>
 
-         
-    
-        
+</body>
 
-        //Animar só uma vez
-        socket.addEventListener("click", function(){
-          showUp.toggleAttribute("disabled");
-        });
-        
-      
-    </script>
-
-  </body>
 </html>
