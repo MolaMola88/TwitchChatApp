@@ -2,22 +2,19 @@ body {
       margin: 0; 
       padding-bottom: 3rem; 
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-      display: block;
-      width: 200px;
-      height: 200px;
-      margin: 50px auto;
-      border: 3px solid red
 }
 
 #messages { 
-      list-style-type: none; 
-      margin: 0; 
-      padding: 0; 
+      display: block flow-root ;
+      list-style-type: none;
+      
+      width: 200px;
+      height: 600px;
 }
 
-#messages > li { 
-      padding: 0.5rem 1rem;
-      background: #efefef00; 
+li {  
+      padding: 8px;
+      max-width: 200px;
       animation-name:showUp;
       animation-duration: 1s;
 }

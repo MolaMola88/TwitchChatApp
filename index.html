@@ -7,7 +7,7 @@
 
 <body>
 
-  <ul id="messages"></ul>
+  <div id="messages"></div>
   <script src="/socket.io/socket.io.js"></script>
 
   <script>
@@ -16,17 +16,52 @@
     socket.on('chat message', function (payload) {
       //Conta número de itens na lista
       const msg = payload['msg'];
+      const usuario = payload['usuario'];
 
-      var messagesList = document.getElementById("messages").getElementsByTagName("li");
+      item = document.createElement('li');
+      item.textContent = (usuario + ": " + msg);
+
+      messagesList = document.getElementById("messages").getElementsByTagName("li");
       itensNumber = messagesList.length;
+
+      
 
       //Acrescenta um item a lista com a mensagem
       if (itensNumber <= 5) {
         //setTimeout( function(){
-        var item = document.createElement('li');
-        item.textContent = msg;
+        
+        
+        //TESTE tentar limitar em 20 caracteres a palavra, primeiro dividir cada palavra
+        //numa array, depois procura palavras com mais de 20 caracteres
+        listadePalavras = item.textContent.split(" ");
+        contaPalavras = 0;
+        novoTextContent = (" ");
+        while( contaPalavras < listadePalavras.length ){
+          palavraComum = listadePalavras[contaPalavras];
+          if ( palavraComum.length > 20){
+            palavraGrande = (" ");
+            contadorPalavraGrande = 0;
+            while ( contadorPalavraGrande < palavraComum.length ){
+              if (palavraGrande.length % 11 == 0){
+                palavraGrande = palavraGrande + " " + palavraComum[contadorPalavraGrande];
+              }
+              else{
+                palavraGrande = palavraGrande + "" + palavraComum[contadorPalavraGrande];
+              }
+              contadorPalavraGrande++;
+            }
+            novoTextContent = novoTextContent + " " + palavraGrande; 
+          }
+          else{
+            novoTextContent = novoTextContent + " " + palavraComum;
+          }
+          contaPalavras++;
+        }
+        item.textContent = novoTextContent;
+        
+
         //Pega a <ul>  messages e faz um apêndice de um novo item <li> contendo a mensagem recebida
-        messages.appendChild(item);
+        messages.append(item);
         //Mexe todo o objeto janela em x=0, y=altura do documento pixels (de algum API já nativo creio eu)
         window.scrollTo(0, document.body.scrollHeight);
         //},2000)
