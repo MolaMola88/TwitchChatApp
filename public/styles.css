@@ -6,6 +6,7 @@ body {
       max-width: 200px;
       width: 200px;
       height: 600px;
+      border: 4rem;
 
 #messages { 
       display: block flow-root ;
