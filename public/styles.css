@@ -1,18 +1,19 @@
 body { 
       margin: 0; 
       padding-bottom: 3rem; 
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+
 
 #messages { 
       display: block flow-root ;
       list-style-type: none;
-      
       width: 200px;
       height: 600px;
 }
 
 li {  
+      display: block flow-root ;
+      border: 0rem;
       padding: 8px;
       max-width: 200px;
       animation-name:showUp;

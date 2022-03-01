@@ -42,7 +42,7 @@
             palavraGrande = (" ");
             contadorPalavraGrande = 0;
             while ( contadorPalavraGrande < palavraComum.length ){
-              if (palavraGrande.length % 11 == 0){
+              if (palavraGrande.length % 20 == 0){
                 palavraGrande = palavraGrande + " " + palavraComum[contadorPalavraGrande];
               }
               else{
@@ -57,7 +57,7 @@
           }
           contaPalavras++;
         }
-        item.textContent = novoTextContent;
+        item.textContent = "\n" + novoTextContent;
         
 
         //Pega a <ul>  messages e faz um apêndice de um novo item <li> contendo a mensagem recebida
