@@ -9,14 +9,14 @@ body {
       border: 4rem;
 
 #messages { 
-      display: block flow-root ;
+      
       list-style-type: none;
       width: 200px;
       height: 600px;
 }
 
 li {  
-      display: block flow-root ;
+      
       border: 0rem;
       padding: 8px;
       max-width: 200px;
